@@ -1,29 +1,30 @@
 .topnav {
-    overflow: hidden;
-    width: 100%;
-    background-color: #17BEFD;
+  overflow: hidden;
+  width: 100%;
+  background-color: #17BEFD;
 }
 
 .topnav a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 18px;
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .topnav a:hover {
-    background-color: #29A9FD;
-    color: white;
+  background-color: #29A9FD;
+  color: white;
 }
 
 .topnav a.active {
-    background-color: #5872FD;
-    color: white;
-    padding: 8px 14px;
+  background-color: #5872FD;
+  color: white;
+  padding: 8px 14px;
 }
+
 .topnav img[type=find] {
   float: right;
   padding: 6px;
@@ -37,36 +38,42 @@
   padding: 6px;
   border: none;
   margin-top: 11px;
-    font-size: 18px;
-    font-style: bold;
+  font-size: 18px;
+  font-style: bold;
 }
 
 @media screen and (max-width: 600px) {
-    .topnav a {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        padding: 14px;
-    }
-    .topnav input[type=text] {
-      float: left;
-      display: block;
-      text-align: left;
-      width: 80%;
-      margin: 0;
-      padding: 14px;
-        border: 1px solid #ccc;
-    }
-    .topnav img[type=find] {
-      float:right;
-      margin: 0
-      padding:inherit;
-    }
+  .topnav a {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+  .topnav input[type=text] {
+    float: left;
+    display: block;
+    text-align: left;
+    width: 80%;
+    margin: 0;
+    padding: 14px;
+    border: 1px solid #ccc;
+  }
+
+  .topnav img[type=find] {
+    float: right;
+    margin: 0 padding:inherit;
+  }
 }
-*{margin: 0;padding: 0;}
-     .topnav{
-         position: fixed;
-         top: 0;
-     }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.topnav {
+  position: fixed;
+  top: 0;
+}
