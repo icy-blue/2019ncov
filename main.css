@@ -1,3 +1,36 @@
 .main {
-  margin-top: 55px;
+  margin-top: 70px;
+}
+
+.block {
+  width: 75%;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  height: 100%;
+  opacity: 80%;
+  border: 1px solid #ccc;
+}
+
+.block hr[type="line"] {
+  height: 1px;
+  border: none;
+  border-top: 1px dashed #999;
+  margin-top: 2px;
+}
+
+.mycontent {
+  font-size: 18px;
+  margin-top: 5px;
+}
+@media screen and (max-width: 600px) {
+  .main {
+    margin-top: 220px;
+  }
+
+  .block {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #eee;
+    height: 100%;
+  }
 }
