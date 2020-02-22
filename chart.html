@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- e-charts -->
+    <script src="https://cdn.bootcss.com/echarts/3.7.1/echarts.min.js"></script>
+
+</head>
+
+<body>
+  <div id = "main" style = "width:600px;height:400px"></div>
+<!-- <<script src="script.js" charset="utf-8"></script>> -->
+<script type="text/javascript">
+  let myChart = echarts.init(document.getElementById('main'));
+  let option = {
+    title: {
+        text: '苏格兰sst年均变化图'
+    },
+    tooltip: {},
+    legend: {
+        data:['水温']
+    },
+    xAxis: {
+        data: ["2010","2011","2012","2013","2014","2015","2016","2017","2018","2019"]
+    },
+    yAxis: {},
+    series: [{
+        name: '水温',
+        type: 'bar',
+        data: [5, 17, 36, 10, 25, 24, 16, 29, 42, 33]
+    }]
+  };
+  myChart.setOption(option);
+</script>
+</body>
+</html>
