@@ -10,6 +10,18 @@
   border: 1px solid #ccc;
 }
 
+.table {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(74, 144, 226);
+  background-color: transparent;
+  border-width: 2px;
+  opacity: 1;
+  height: 160px;
+  overflow: hidden;
+  font-size: 0;
+}
+
 .block hr[type="line"] {
   height: 1px;
   border: none;
@@ -30,15 +42,46 @@
   margin-top: 5px;
 }
 
-footer {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: 200;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
+.a1 {
+  margin: auto;
+  height: inherit;
+  width: 25%;
+  display: inline-block;
+  background-color: #222;
 }
 
+.a2 {
+  margin: auto;
+  height: inherit;
+  width: 25%;
+  display: inline-block;
+  background-color: #444;
+}
+
+.a3 {
+  margin: auto;
+  height: inherit;
+  width: 25%;
+  display: inline-block;
+  background-color: #666;
+}
+
+.a4 {
+  margin: auto;
+  height: inherit;
+  width: 25%;
+  display: inline-block;
+  background-color: #888;
+}
+
+footer {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 200;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
 
 @media screen and (max-width: 600px) {
   .main {
@@ -50,5 +93,9 @@ footer {
     margin: 0 auto;
     background-color: #eee;
     height: 100%;
+  }
+
+  .table {
+    height: 320px;
   }
 }
