@@ -28,15 +28,21 @@
     color: white;
     padding: 8px 14px;
 }
-
+.topnav img[type=find] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 4px;
+  margin-right: 16px;
+}
 /* 设置导航栏的搜索框样式 */
 .topnav input[type=text] {
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+    font-size: 18px;
+    font-style: bold;
 }
 
 /* 当屏幕宽度小于 600px 时，垂直堆叠显示菜单选项和搜索框 */
