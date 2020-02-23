@@ -17,7 +17,7 @@
   background-color: transparent;
   border-width: 2px;
   opacity: 1;
-  height: 160px;
+  height: 120px;
   overflow: hidden;
   font-size: 0;
 }
@@ -47,7 +47,8 @@
   height: inherit;
   width: 25%;
   display: inline-block;
-  background-color: #222;
+  /* background-color: rgb(30%, 30%, 30%, 1); */
+  vertical-align: top;
 }
 
 .a2 {
@@ -55,7 +56,8 @@
   height: inherit;
   width: 25%;
   display: inline-block;
-  background-color: #444;
+  /* background-color: rgb(50%, 50%, 50%, 1); */
+  vertical-align: top;
 }
 
 .a3 {
@@ -63,7 +65,8 @@
   height: inherit;
   width: 25%;
   display: inline-block;
-  background-color: #666;
+  background-color: rgb(70%, 70%, 70%, 1);
+  vertical-align: top;
 }
 
 .a4 {
@@ -71,7 +74,8 @@
   height: inherit;
   width: 25%;
   display: inline-block;
-  background-color: #888;
+  background-color: rgb(90%, 90%, 90%, 1);
+  vertical-align: top;
 }
 
 footer {
@@ -98,4 +102,33 @@ footer {
   .table {
     height: 320px;
   }
+}
+
+[type=datatitle] {
+  padding-left: 10px;
+  font-size: 17px;
+  font-family: "微软雅黑";
+  overflow: hidden;
+  height: 32px;
+  line-height: 32px;
+  font-weight: 700;
+  /* transform: translateY(30px); */
+  vertical-align: middle;
+}
+
+.data1 {
+  white-space: nowrap;
+  font-size: 32px;
+  color: rgb(85, 85, 85);
+}
+
+.ren {
+  white-space: nowrap;
+  font-size: 19px;
+  color: rgb(85, 85, 85);
+  margin-left: 5px;
+}
+
+.datapeople {
+  text-align: center;
 }
