@@ -4,6 +4,9 @@
 <head>
   <link rel="stylesheet" href="nav.css" type="text/css" media="all" />
   <link rel="stylesheet" href="main.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="jquery.dataTables.min.css" type="text/css" media="all" />
+  <script src="jquery.min.js" type="text/javascript"></script>
+  <script src="jquery.dataTables.min.js" type="text/javascript"></script>
   <script src="data.js" type="text/javascript"></script>
   <link rel="shortcut icon" href="site.ico">
   <title>新冠病毒疫情实时动态</title>
@@ -53,6 +56,18 @@
             <div class="a4">
             </div>
           </div>
+          <table id="table_province" class="display">
+            <caption>各省份疫情</caption>
+            <thead>
+              <tr>
+                <th>省份名称</th>
+                <th>累计确诊</th>
+                <th>剩余确诊</th>
+                <th>治愈病例</th>
+                <th>死亡病例</th>
+              </tr>
+              <thead>
+          </table>
           1<br>2<br>13<br>14<br>15<br>16<br>1<br>1<br>1<br>1<br>1<br>
           1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
           1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>
