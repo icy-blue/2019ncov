@@ -2,19 +2,46 @@ let array, table, detail;
 
 let arr = [];
 
+function Province(provinceName, cityName, confirmedCount, currentConfirmedCount,
+  suspectedCount, curedCount, deadCount) {
+  this.provinceName = provinceName;
+  this.cityName = cityName;
+  this.confirmedCount = confirmedCount;
+  this.currentConfirmedCount = currentConfirmedCount;
+  this.suspectedCount = suspectedCount;
+  this.curedCount = curedCount;
+  this.deadCount = deadCount;
+}
+
 let data = $.getJSON("dingxiangyuan.json", null, function(data, status, xhr) {
   let json = JSON.stringify(data);
   array = JSON.parse(json);
-  detail = array.data.getListByCountryTypeService1;
+  detail = array.data.getAreaStat;
+  for (let i = 0; i < detail.length; i++) {
+    let province = detail[i];
+    arr.push(new Province(province.provinceName, province.provinceName,
+      province.confirmedCount, province.currentConfirmedCount,
+      province.suspectedCount, province.curedCount, province.deadCount));
+    let cities = province.cities;
+    for (let j = 0; j < cities.length; j++) {
+      let city = cities[j];
+      arr.push(new Province(province.provinceName, city.cityName,
+        city.confirmedCount, city.currentConfirmedCount, city.suspectedCount,
+        city.curedCount, city.deadCount));
+    }
+  }
   console.log(detail);
 });
 
 $(document).ready(function() {
   setTimeout(function() {
     table = $('#table_province').DataTable({
-      data: detail,
+      data: arr,
       columns: [{
           data: 'provinceName'
+        },
+        {
+          data: 'cityName'
         },
         {
           data: 'confirmedCount'
@@ -33,6 +60,14 @@ $(document).ready(function() {
         [2, "desc"],
         [1, "desc"]
       ],
+      order: [[0, 'asc']],
+      rowGroup: {
+        dataSrc: 'provinceName'
+      },
+      columnDefs: [{
+        targets: [0],
+        visible: false
+      }],
       language: {
         "sProcessing": "处理中...",
         "sLengthMenu": "显示 _MENU_ 项结果",
@@ -61,5 +96,7 @@ $(document).ready(function() {
       keys: true
     });
   }, 100);
-  $('#table_province').dataTable(options).css({'width': '100%'});
+  $('#table_province').dataTable(options).css({
+    'width': '100%'
+  });
 });

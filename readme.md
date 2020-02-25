@@ -5,6 +5,9 @@
 - [x] 导航栏固定和多端适配
 - [x] 对github数据包的自动解析与部署（实现方式：~~py/c++~~ js::JSON）
 - [x] 表格显示（实现方式：jQuery dataTable）
+- [x] 表格可伸缩（实现方式：jQuery dataTable）
+- [x] 表格分组展示（实现方式：jQuery dataTable）
+- [ ] 表格分组可折叠（实现方式：jQuery dataTable）
 - [ ] 图表展示（实现方式：echart.js + map-viz）
 - [ ] 按省份的区域图像展示渲染（实现方式：html-svg + js）
 - [ ] 特色地域人口流动（实现方式：百度地图api + html-svg）
