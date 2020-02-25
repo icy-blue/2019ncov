@@ -40,7 +40,8 @@ $(document).ready(function() {
         }
       ],
       aaSorting: [
-        [2, "desc"]
+        [2, "desc"],
+        [1, "desc"]
       ],
       language: {
         "sProcessing": "处理中...",
@@ -65,7 +66,9 @@ $(document).ready(function() {
           "sSortAscending": ": 以升序排列此列",
           "sSortDescending": ": 以降序排列此列"
         }
-      }
+      },
+      colReorder: true,
+      keys: true
     });
   }, 100);
 
