@@ -1,15 +1,5 @@
 let array, table, detail;
 
-function Province(provinceName, confirmedCount, currentConfirmedCount,
-  suspectedCount, curedCount, deadCount) {
-  this.provinceName = provinceName;
-  this.confirmedCount = confirmedCount;
-  this.currentConfirmedCount = currentConfirmedCount;
-  this.suspectedCount = suspectedCount;
-  this.curedCount = curedCount;
-  this.deadCount = deadCount;
-}
-
 let arr = [];
 
 let data = $.getJSON("dingxiangyuan.json", null, function(data, status, xhr) {
@@ -71,5 +61,5 @@ $(document).ready(function() {
       keys: true
     });
   }, 100);
-
+  $('#table_province').dataTable(options).css({'width': '100%'});
 });
