@@ -37,7 +37,33 @@
         </div>
         <hr type="line" />
         <div class="mycontent">
-          <div class="table">
+          <ul class="statistics">
+      			<li>
+      				<strong style="color: #f74c31;" id="currentConfirmedCount">47464</strong>
+      				<span datacontent="">现有确诊</span>
+      			</li>
+      			<li>
+      				<strong style="color:#a25a4e;" id="seriousCount">9126</strong>
+      				<span datacontent="">现有重症</span>
+      			</li>
+      			<li>
+      				<strong style="color: #f78207;" id="suspectedCount">2824</strong>
+      				<span datacontent="">现有疑似</span>
+      			</li>
+      			<li>
+      				<strong style="color: #ae212c;" id="confirmedCount">77785</strong>
+      				<span datacontent="">累计确诊</span>
+      			</li>
+      			<li>
+      				<strong style="color: #5d7092;" id="deadCount">2666</strong>
+      				<span datacontent="">累计死亡</span>
+      			</li>
+      			<li>
+      				<strong style="color: #28b7a3;" id="curedCount">27655</strong>
+      				<span datacontent="">累计治愈</span>
+      			</li>
+      		</ul>
+          <!-- <div class="table">
             <div class="a1">
               <text type="datatitle">·累计确诊（对比昨日）</text>
               <div class="datapeople">
@@ -61,7 +87,7 @@
             <div class="a3">
             </div>
             <div class="a4">
-            </div>
+            </div> -->
           </div>
           <table id="table_province" class="display">
             <caption>各省份疫情</caption>
@@ -76,8 +102,11 @@
               </tr>
               <thead>
           </table>
-          <div id="chartA" class="chart-container" style="width:50%; height:500px;"></div>
-          <script type="text/javascript" src="resource\js\map.js"></script>
+          <div class="charts">
+            <div id="chartA" class="chart-container" style="width:50%; height:500px;"></div>
+            <script type="text/javascript" src="resource\js\map.js"></script>
+
+          </div>
         </div>
       </div>
     </div>

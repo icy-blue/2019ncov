@@ -60,7 +60,9 @@ $(document).ready(function() {
         [2, "desc"],
         [1, "desc"]
       ],
-      order: [[0, 'asc']],
+      order: [
+        [0, 'asc']
+      ],
       rowGroup: {
         dataSrc: 'provinceName'
       },
@@ -95,5 +97,20 @@ $(document).ready(function() {
       colReorder: true,
       keys: true
     });
+    let datapack = array.data.getStatisticsService;
+
+    let currentConfirmedCount = datapack.curedCount;
+    let seriousCount = datapack.seriousCount;
+    let suspectedCount = datapack.suspectedCount;
+    let confirmedCount = datapack.confirmedCount;
+    let deadCount = datapack.deadCount;
+    let curedCount = datapack.curedCount;
+
+    $("#currentConfirmedCount").text(currentConfirmedCount);
+    $("#seriousCount").text(seriousCount);
+    $("#suspectedCount").text(suspectedCount);
+    $("#confirmedCount").text(confirmedCount);
+    $("#deadCount").text(deadCount);
+    $("#curedCount").text(curedCount);
   }, 3000);
 });
