@@ -102,6 +102,10 @@ footer {
   .table {
     height: 320px;
   }
+
+  #chartA {
+    width: 100%;
+  }
 }
 
 [type=datatitle] {
@@ -131,4 +135,12 @@ footer {
 
 .datapeople {
   text-align: center;
+}
+
+#table_province {
+  width: 100%;
+}
+
+.chart-container {
+  width: 100%;
 }

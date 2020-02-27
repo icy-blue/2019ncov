@@ -13,7 +13,7 @@ function Province(provinceName, cityName, confirmedCount, currentConfirmedCount,
   this.deadCount = deadCount;
 }
 
-let data = $.getJSON("dingxiangyuan.json", null, function(data, status, xhr) {
+let data = $.getJSON("https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan", null, function(data, status, xhr) {
   let json = JSON.stringify(data);
   array = JSON.parse(json);
   detail = array.data.getAreaStat;
@@ -95,8 +95,5 @@ $(document).ready(function() {
       colReorder: true,
       keys: true
     });
-  }, 100);
-  $('#table_province').dataTable(options).css({
-    'width': '100%'
-  });
+  }, 3000);
 });
