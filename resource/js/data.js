@@ -13,7 +13,8 @@ function Province(provinceName, cityName, confirmedCount, currentConfirmedCount,
   this.deadCount = deadCount;
 }
 
-let data = $.getJSON("https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan", null, function(data, status, xhr) {
+// let data = $.getJSON("https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan", null, function(data, status, xhr) {
+  let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
   let json = JSON.stringify(data);
   array = JSON.parse(json);
   detail = array.data.getAreaStat;
@@ -106,11 +107,25 @@ $(document).ready(function() {
     let deadCount = datapack.deadCount;
     let curedCount = datapack.curedCount;
 
+    let currentConfirmedIncr = datapack.currentConfirmedIncr;
+    let seriousIncr = datapack.seriousIncr;
+    let suspectedIncr = datapack.suspectedIncr;
+    let confirmedIncr = datapack.confirmedIncr;
+    let deadIncr = datapack.deadIncr;
+    let curedIncr = datapack.curedIncr;
+
     $("#currentConfirmedCount").text(currentConfirmedCount);
     $("#seriousCount").text(seriousCount);
     $("#suspectedCount").text(suspectedCount);
     $("#confirmedCount").text(confirmedCount);
     $("#deadCount").text(deadCount);
     $("#curedCount").text(curedCount);
+
+    $("#currentConfirmedIncr").text(currentConfirmedIncr);
+    $("#seriousIncr").text(seriousIncr);
+    $("#suspectedIncr").text(suspectedIncr);
+    $("#confirmedIncr").text(confirmedIncr);
+    $("#deadIncr").text(deadIncr);
+    $("#curedIncr").text(curedIncr);
   }, 3000);
 });
