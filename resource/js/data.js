@@ -17,26 +17,6 @@ function Province(provinceName, cityName, confirmedCount, currentConfirmedCount,
 }
 
 let nameData = $.getJSON("/resource/data/country-code.json");
-setTimeout(function() {
-  nameArray = nameData.responseJSON;
-  let globalPack = dataArray.data.getListByCountryTypeService2;
-  for (let i = 0; i < globalPack.length; i++) {
-    let cnName = globalPack[i].provinceName,
-      enName;
-    for (let j = 0; j < nameArray.length; j++) {
-      console.log(nameArray[j].cn);
-      if (nameArray[j].cn == cnName) {
-        enName = nameArray[j].en;
-        console.log(enName);
-      }
-    }
-    worldChartArray.push({
-      "name": enName,
-      "value": globalPack[i].currentConfirmedCount
-    });
-  }
-  console.log(worldChartArray);
-}, 200);
 
 // let data = $.getJSON("https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan", null, function(data, status, xhr) {
 let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
@@ -160,3 +140,28 @@ $(document).ready(function() {
     $("#curedIncr").text(curedIncr);
   }, 3000);
 });
+
+setTimeout(function() {
+  nameArray = nameData.responseJSON;
+  let globalPack = dataArray.data.getListByCountryTypeService2;
+  for (let i = 0; i < globalPack.length; i++) {
+    let cnName = globalPack[i].provinceName,
+      enName;
+    for (let j = 0; j < nameArray.length; j++) {
+      console.log(nameArray[j].cn);
+      if (nameArray[j].cn == cnName) {
+        enName = nameArray[j].en;
+        console.log(enName);
+      }
+    }
+    worldChartArray.push({
+      "name": enName,
+      "value": globalPack[i].currentConfirmedCount
+    });
+  }
+  worldChartArray.push({
+    "name": "China",
+    "value": currentConfirmedCount
+  });
+  console.log(worldChartArray);
+}, 200);
