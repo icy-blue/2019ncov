@@ -141,10 +141,6 @@ footer {
   width: 100%;
 }
 
-.chart-container {
-  width: 100%;
-}
-
 .statistics li strong {
 	font-size: 24px;
 	cursor: pointer;
@@ -176,4 +172,8 @@ footer {
 	color: #666;
 	font-size: 12px;
 	transform: scale(0.9);
+}
+
+.charts {
+  font-size: 0;
 }

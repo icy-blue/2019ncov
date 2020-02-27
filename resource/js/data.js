@@ -1,6 +1,9 @@
-let array, table, detail;
+let dataArray, table, dataDetail;
 
-let arr = [];
+let tableArray = [],
+  chinaChartArray = [],
+  worldChartArray = [],
+  nameArray = [];
 
 function Province(provinceName, cityName, confirmedCount, currentConfirmedCount,
   suspectedCount, curedCount, deadCount) {
@@ -13,31 +16,59 @@ function Province(provinceName, cityName, confirmedCount, currentConfirmedCount,
   this.deadCount = deadCount;
 }
 
+let nameData = $.getJSON("/resource/data/country-code.json");
+setTimeout(function() {
+  nameArray = nameData.responseJSON;
+  let globalPack = dataArray.data.getListByCountryTypeService2;
+  for (let i = 0; i < globalPack.length; i++) {
+    let cnName = globalPack[i].provinceName,
+      enName;
+    for (let j = 0; j < nameArray.length; j++) {
+      console.log(nameArray[j].cn);
+      if (nameArray[j].cn == cnName) {
+        enName = nameArray[j].en;
+        console.log(enName);
+      }
+    }
+    worldChartArray.push({
+      "name": enName,
+      "value": globalPack[i].currentConfirmedCount
+    });
+  }
+  console.log(worldChartArray);
+}, 200);
+
 // let data = $.getJSON("https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan", null, function(data, status, xhr) {
-  let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
+let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
   let json = JSON.stringify(data);
-  array = JSON.parse(json);
-  detail = array.data.getAreaStat;
-  for (let i = 0; i < detail.length; i++) {
-    let province = detail[i];
-    arr.push(new Province(province.provinceName, province.provinceName,
+  dataArray = JSON.parse(json);
+  dataDetail = dataArray.data.getAreaStat;
+  for (let i = 0; i < dataDetail.length; i++) {
+    let province = dataDetail[i];
+    tableArray.push(new Province(province.provinceName, province.provinceName,
       province.confirmedCount, province.currentConfirmedCount,
       province.suspectedCount, province.curedCount, province.deadCount));
     let cities = province.cities;
     for (let j = 0; j < cities.length; j++) {
       let city = cities[j];
-      arr.push(new Province(province.provinceName, city.cityName,
+      tableArray.push(new Province(province.provinceName, city.cityName,
         city.confirmedCount, city.currentConfirmedCount, city.suspectedCount,
         city.curedCount, city.deadCount));
     }
   }
-  console.log(detail);
+  for (let i = 0; i < dataDetail.length; i++) {
+    chinaChartArray.push({
+      "name": dataDetail[i].provinceShortName,
+      "value": dataDetail[i].currentConfirmedCount
+    });
+  }
+  console.log(chinaChartArray);
 });
 
 $(document).ready(function() {
   setTimeout(function() {
     table = $('#table_province').DataTable({
-      data: arr,
+      data: tableArray,
       columns: [{
           data: 'provinceName'
         },
@@ -98,7 +129,7 @@ $(document).ready(function() {
       colReorder: true,
       keys: true
     });
-    let datapack = array.data.getStatisticsService;
+    let datapack = dataArray.data.getStatisticsService;
 
     let currentConfirmedCount = datapack.curedCount;
     let seriousCount = datapack.seriousCount;
