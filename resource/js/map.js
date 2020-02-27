@@ -1,5 +1,4 @@
 setTimeout(function() {
-
   var chart_chartA = echarts.init(
     document.getElementById('chartA'), 'white', {
       renderer: 'canvas'
@@ -116,7 +115,7 @@ setTimeout(function() {
       "type": "map",
       "name": "\u786e\u8bca",
       "label": {
-        "show": true,
+        "show": false,
         "position": "top",
         "margin": 8
       },
@@ -184,5 +183,4 @@ setTimeout(function() {
     }
   };
   chart_chartB.setOption(option_chartB);
-
-}, 3000);
+}, 3200);

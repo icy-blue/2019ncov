@@ -111,7 +111,7 @@ $(document).ready(function() {
     });
     let datapack = dataArray.data.getStatisticsService;
 
-    let currentConfirmedCount = datapack.curedCount;
+    let currentConfirmedCount = datapack.currentConfirmedCount;
     let seriousCount = datapack.seriousCount;
     let suspectedCount = datapack.suspectedCount;
     let confirmedCount = datapack.confirmedCount;
@@ -138,30 +138,30 @@ $(document).ready(function() {
     $("#confirmedIncr").text(confirmedIncr);
     $("#deadIncr").text(deadIncr);
     $("#curedIncr").text(curedIncr);
-  }, 3000);
-});
 
-setTimeout(function() {
-  nameArray = nameData.responseJSON;
-  let globalPack = dataArray.data.getListByCountryTypeService2;
-  for (let i = 0; i < globalPack.length; i++) {
-    let cnName = globalPack[i].provinceName,
-      enName;
-    for (let j = 0; j < nameArray.length; j++) {
-      console.log(nameArray[j].cn);
-      if (nameArray[j].cn == cnName) {
-        enName = nameArray[j].en;
-        console.log(enName);
+    nameArray = nameData.responseJSON;
+    let globalPack = dataArray.data.getListByCountryTypeService2;
+    for (let i = 0; i < globalPack.length; i++) {
+      let cnName = globalPack[i].provinceName,
+        enName;
+      for (let j = 0; j < nameArray.length; j++) {
+        if (nameArray[j].cn == cnName) {
+          enName = nameArray[j].en;
+          console.log(enName);
+        }
       }
+      if(enName === undefined) {
+        console.log(cnName);
+      }
+      worldChartArray.push({
+        "name": enName,
+        "value": globalPack[i].currentConfirmedCount
+      });
     }
     worldChartArray.push({
-      "name": enName,
-      "value": globalPack[i].currentConfirmedCount
+      "name": "China",
+      "value": currentConfirmedCount
     });
-  }
-  worldChartArray.push({
-    "name": "China",
-    "value": currentConfirmedCount
-  });
-  console.log(worldChartArray);
-}, 200);
+    console.log(worldChartArray);
+  }, 3000);
+});
