@@ -187,8 +187,8 @@ optionLine = {
     text: '全国新型肺炎疫情趋势',
     x: 'center',
     y: 'top',
-    top: '20px',
-    subtextStyle: {
+    top: '25px',
+    textStyle: {
       fontSize: 25
     }
   },
