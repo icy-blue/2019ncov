@@ -11,6 +11,8 @@
   <script src="resource\js\dataTables.keyTable.min.js" type="text/javascript"></script>
   <script src="resource\js\dataTables.rowGroup.min.js" type="text/javascript"></script>
   <script src="resource\js\data.js" type="text/javascript"></script>
+  <script src="resource\js\jquery.animateNumber.min.js" type="text/javascript"></script>
+  <script src="resource\js\jquery.color.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="resource\js\echarts.min.js"></script>
   <script type="text/javascript" src="resource\js\china.js"></script>
   <script type="text/javascript" src="resource\js\world.js"></script>
@@ -39,27 +41,27 @@
         <div class="mycontent">
           <ul class="statistics">
             <li>
-              <strong style="color: #f74c31;" id="currentConfirmedCount">47464</strong>
+              <strong style="color: #f74c31;" id="currentConfirmedCount">0</strong>
               <span datacontent="">现有确诊</span>
             </li>
             <li>
-              <strong style="color:#a25a4e;" id="seriousCount">9126</strong>
+              <strong style="color:#a25a4e;" id="seriousCount">0</strong>
               <span datacontent="">现有重症</span>
             </li>
             <li>
-              <strong style="color: #f78207;" id="suspectedCount">2824</strong>
+              <strong style="color: #f78207;" id="suspectedCount">0</strong>
               <span datacontent="">现有疑似</span>
             </li>
             <li>
-              <strong style="color: #ae212c;" id="confirmedCount">77785</strong>
+              <strong style="color: #ae212c;" id="confirmedCount">0</strong>
               <span datacontent="">累计确诊</span>
             </li>
             <li>
-              <strong style="color: #5d7092;" id="deadCount">2666</strong>
+              <strong style="color: #5d7092;" id="deadCount">0</strong>
               <span datacontent="">累计死亡</span>
             </li>
             <li>
-              <strong style="color: #28b7a3;" id="curedCount">27655</strong>
+              <strong style="color: #28b7a3;" id="curedCount">0</strong>
               <span datacontent="">累计治愈</span>
             </li>
           </ul>
@@ -129,9 +131,10 @@
             <thead>
         </table>
         <div class="charts">
-          <div id="chartA" class="chart-container" style="width:49%; height:500px;"></div>
-          <div id="chartB" class="chart-container" style="width:49%; height:500px;"></div>
-          <script type="text/javascript" src="resource\js\map.js"></script>
+          <div id="chartA" class="chart-container" style="width:100%; height:500px;"></div>
+          <div id="chartB" class="chart-container" style="width:100%; height:500px;"></div>
+          <div id="chartLine" class="chart-container" style="width:100%; height:500px;"></div>
+          <script type="text/javascript" src="resource\js\charts.js"></script>
         </div>
       </div>
     </div>

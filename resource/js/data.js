@@ -16,7 +16,17 @@ function Province(provinceName, cityName, confirmedCount, currentConfirmedCount,
   this.deadCount = deadCount;
 }
 
+function updateNumber(target, increaseNum, newNum) {
+  target
+    .prop('number', newNum - increaseNum)
+    .animateNumber({
+      number: newNum
+    }, 3000);
+}
+
 let nameData = $.getJSON("/resource/data/country-code.json");
+
+let lineData = $.getJSON("https://jackiezheng.github.io/2019-nCoV/Json/data.json");
 
 // let data = $.getJSON("https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan", null, function(data, status, xhr) {
 let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
@@ -125,19 +135,19 @@ $(document).ready(function() {
     let deadIncr = datapack.deadIncr;
     let curedIncr = datapack.curedIncr;
 
-    $("#currentConfirmedCount").text(currentConfirmedCount);
-    $("#seriousCount").text(seriousCount);
-    $("#suspectedCount").text(suspectedCount);
-    $("#confirmedCount").text(confirmedCount);
-    $("#deadCount").text(deadCount);
-    $("#curedCount").text(curedCount);
+    updateNumber($("#currentConfirmedCount"), currentConfirmedIncr, currentConfirmedCount);
+    updateNumber($("#seriousCount"), seriousIncr, seriousCount);
+    updateNumber($("#suspectedCount"), suspectedIncr, suspectedCount);
+    updateNumber($("#confirmedCount"), confirmedIncr, confirmedCount);
+    updateNumber($("#deadCount"), deadIncr, deadCount);
+    updateNumber($("#curedCount"), curedIncr, curedCount);
 
-    $("#currentConfirmedIncr").text(currentConfirmedIncr);
-    $("#seriousIncr").text(seriousIncr);
-    $("#suspectedIncr").text(suspectedIncr);
-    $("#confirmedIncr").text(confirmedIncr);
-    $("#deadIncr").text(deadIncr);
-    $("#curedIncr").text(curedIncr);
+    updateNumber($("#currentConfirmedIncr"), currentConfirmedIncr, currentConfirmedIncr);
+    updateNumber($("#seriousIncr"), seriousIncr, seriousIncr);
+    updateNumber($("#suspectedIncr"), suspectedIncr, suspectedIncr);
+    updateNumber($("#confirmedIncr"), confirmedIncr, confirmedIncr);
+    updateNumber($("#deadIncr"), deadIncr, deadIncr);
+    updateNumber($("#curedIncr"), curedIncr, curedIncr);
 
     nameArray = nameData.responseJSON;
     let globalPack = dataArray.data.getListByCountryTypeService2;
