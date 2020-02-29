@@ -1,4 +1,4 @@
-let dataArray, table, dataDetail;
+let dataArray, table, dataDetail, provinceNameArray;
 
 let waiting = 2500;
 
@@ -28,12 +28,16 @@ function updateNumber(target, increaseNum, newNum) {
 
 let nameData = $.getJSON("/resource/data/country-code.json");
 
-let lineData = $.getJSON("http://git.icys.club/2019-nCoV/Json/data.json");
+let lineData = $.getJSON("http://data.icys.club/git.json");
 
 let cityData = $.getJSON("/resource/data/city.json");
 
-let data = $.getJSON("http://dxy.icys.club/release/dingxiangyuan", null, function(data, status, xhr) {
-  // let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
+let provinceNameData = $.getJSON("/resource/data/province.json", null, function(data, status, xhr) {
+  provinceNameArray = JSON.parse(JSON.stringify(data));
+});
+
+// let data = $.getJSON("http://data.icys.club/dingxiangyuan.json", null, function(data, status, xhr) {
+  let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
   let json = JSON.stringify(data);
   dataArray = JSON.parse(json);
   dataDetail = dataArray.data.getAreaStat;
@@ -56,7 +60,7 @@ let data = $.getJSON("http://dxy.icys.club/release/dingxiangyuan", null, functio
       "value": dataDetail[i].currentConfirmedCount
     });
   }
-  console.log(chinaChartArray);
+  // console.log(chinaChartArray);
 });
 
 $(document).ready(function() {
@@ -161,11 +165,11 @@ $(document).ready(function() {
       for (let j = 0; j < nameArray.length; j++) {
         if (nameArray[j].cn == cnName) {
           enName = nameArray[j].en;
-          console.log(enName);
+          // console.log(enName);
         }
       }
       if (enName === undefined) {
-        console.log(cnName);
+        // console.log(cnName);
       }
       worldChartArray.push({
         "name": enName,
@@ -176,6 +180,6 @@ $(document).ready(function() {
       "name": "China",
       "value": currentConfirmedCount
     });
-    console.log(worldChartArray);
+    // console.log(worldChartArray);
   }, waiting);
 });

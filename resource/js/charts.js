@@ -313,5 +313,18 @@ setTimeout(function() {
   chartChina.setOption(optionChina);
   chartWorld.setOption(optionWorld);
   console.log(optionLine);
+
+  function getENProvinceName(cnProvinceName) {
+    for (let i = 0; i < provinceNameArray.length; i++) {
+      if (provinceNameArray[i].provinceName.indexOf(cnProvinceName) != -1) {
+        return provinceNameArray[i].provinceEnglishName;
+      }
+    }
+  }
+  chartChina.on('click', function(params) {
+    console.log(params.name);
+    console.log(getENProvinceName(params.name));
+
+  });
   chartLine.setOption(optionLine);
 }, waiting + 200);

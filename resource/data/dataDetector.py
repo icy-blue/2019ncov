@@ -18,18 +18,25 @@ def getAPI(url, dataname):
     content = json.loads(txt)
     print(dataname + ": " + str(len(txt)))
     if len(response.text) > 200:
-        data = open(dataname,"w+")
+        data = open(dataname, "w+", encoding="utf-8")
         print(content, file = data)
         data.close()
         print("done")
 def process():
     dxyURL = "https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan"
     dxyName = "dingxiangyuan.json"
-    getAPI(dxyURL, dxyName)
+    # getAPI(dxyURL, dxyName)
+
+    gitURL = "https://jackiezheng.github.io/2019-nCoV/Json/data.json"
+    gitName = "git.json"
+    getAPI(gitURL, gitName)
     #
     elseURL = "https://lab.isaaclin.cn/nCoV/api/area?latest="
-    overall = "all.json"
-    getAPI(elseURL, overall)
+    overall = "all-all.json"
+    getAPI(elseURL + "0", overall)
+
+    latest = "all-latest.json"
+    getAPI(elseURL + "1", overall)
 
     i = 0
     while i < len(proCN):
