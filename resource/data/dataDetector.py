@@ -23,9 +23,9 @@ def getAPI(url, dataname):
         data.close()
         print("done")
 def process():
-    dxyURL = "http://dxy.icys.club/release/dingxiangyuan"
+    dxyURL = "https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan"
     dxyName = "dingxiangyuan.json"
-    getAPI(dxyURL, dxyname)
+    getAPI(dxyURL, dxyName)
     #
     elseURL = "https://lab.isaaclin.cn/nCoV/api/area?latest="
     overall = "all.json"
