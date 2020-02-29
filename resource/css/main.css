@@ -87,7 +87,7 @@ footer {
   font-size: 14px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .main {
     margin-top: 220px;
   }

@@ -4,7 +4,7 @@
   background-color: #17BEFD;
 }
 
-.topnav a {
+.topnav li a {
   float: left;
   display: block;
   color: white;
@@ -14,18 +14,18 @@
   font-size: 18px;
 }
 
-.topnav a:hover {
+.topnav li a:hover {
   background-color: #29A9FD;
   color: white;
 }
 
-.topnav a.active {
+.topnav li a.active {
   background-color: #5872FD;
   color: white;
   padding: 8px 14px;
 }
 
-.topnav img[type=find] {
+.topnav li img[type=find] {
   float: right;
   padding: 6px;
   border: none;
@@ -33,8 +33,9 @@
   margin-right: 16px;
 }
 
-.topnav input[type=text] {
+.topnav li input[type=text] {
   float: right;
+  width: 150px;
   padding: 6px;
   border: none;
   margin-top: 11px;
@@ -42,8 +43,8 @@
   font-style: bold;
 }
 
-@media screen and (max-width: 600px) {
-  .topnav a {
+@media screen and (max-width: 800px) {
+  .topnav li a {
     float: none;
     display: block;
     text-align: left;
@@ -52,7 +53,7 @@
     padding: 14px;
   }
 
-  .topnav input[type=text] {
+  .topnav li input[type=text] {
     float: left;
     display: block;
     text-align: left;
@@ -62,7 +63,7 @@
     border: 1px solid #ccc;
   }
 
-  .topnav img[type=find] {
+  .topnav li img[type=find] {
     float: right;
     margin: 0 padding:inherit;
   }
@@ -76,5 +77,28 @@
 .topnav {
   position: fixed;
   top: 0;
-  z-index:99999;
+  z-index: 99999;
+}
+
+.topnav li {
+  list-style: none;
+}
+
+.topnav li ul {
+  list-style: none;
+  display: none;
+}
+
+.topnav li:hover ul{
+  display: block;
+}
+
+.topnav li ul li a{
+  background-color: rgb(29, 95, 211);
+  font-size: 15px;
+  padding: 16px 10px;
+}
+
+.topnav li ul li:hover a{
+  background-color: rgb(125, 28, 189);
 }

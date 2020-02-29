@@ -314,4 +314,4 @@ setTimeout(function() {
   chartWorld.setOption(optionWorld);
   console.log(optionLine);
   chartLine.setOption(optionLine);
-}, 3200);
+}, waiting + 200);

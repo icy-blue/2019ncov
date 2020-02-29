@@ -1,5 +1,7 @@
 let dataArray, table, dataDetail;
 
+let waiting = 2500;
+
 let tableArray = [],
   chinaChartArray = [],
   worldChartArray = [],
@@ -26,10 +28,12 @@ function updateNumber(target, increaseNum, newNum) {
 
 let nameData = $.getJSON("/resource/data/country-code.json");
 
-let lineData = $.getJSON("https://jackiezheng.github.io/2019-nCoV/Json/data.json");
+let lineData = $.getJSON("http://git.icys.club/2019-nCoV/Json/data.json");
 
-// let data = $.getJSON("https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan", null, function(data, status, xhr) {
-let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
+let cityData = $.getJSON("/resource/data/city.json");
+
+let data = $.getJSON("http://dxy.icys.club/release/dingxiangyuan", null, function(data, status, xhr) {
+  // let data = $.getJSON("/resource/data/dingxiangyuan.json", null, function(data, status, xhr) {
   let json = JSON.stringify(data);
   dataArray = JSON.parse(json);
   dataDetail = dataArray.data.getAreaStat;
@@ -160,7 +164,7 @@ $(document).ready(function() {
           console.log(enName);
         }
       }
-      if(enName === undefined) {
+      if (enName === undefined) {
         console.log(cnName);
       }
       worldChartArray.push({
@@ -173,5 +177,5 @@ $(document).ready(function() {
       "value": currentConfirmedCount
     });
     console.log(worldChartArray);
-  }, 3000);
+  }, waiting);
 });
