@@ -1,6 +1,6 @@
-let dataArray, table, dataDetail, provinceNameArray;
+let dataArray, table, dataDetail, provinceNameArray, lineArray;
 
-let waiting = 2500;
+let waiting = 4000;
 
 let tableArray = [],
   chinaChartArray = [],
@@ -29,6 +29,7 @@ function updateNumber(target, increaseNum, newNum) {
 let nameData = $.getJSON("/resource/data/country-code.json");
 
 let lineData = $.getJSON("http://data.icys.club/git.json");
+
 
 let cityData = $.getJSON("/resource/data/city.json");
 

@@ -36,7 +36,7 @@ def process():
     getAPI(elseURL + "0", overall)
 
     latest = "all-latest.json"
-    getAPI(elseURL + "1", overall)
+    getAPI(elseURL + "1", latest)
 
     i = 0
     while i < len(proCN):
