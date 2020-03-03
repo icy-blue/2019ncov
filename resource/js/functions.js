@@ -1,5 +1,6 @@
-let dataArray, table, dataDetail, provinceNameArray, lineArray, cityArray, datapack;
+let table, dataDetail, provinceNameArray, lineArray, cityArray, datapack;
 let ajaxArray = [];
+let dataArray = [];
 
 let waiting = 4000;
 
@@ -15,16 +16,23 @@ function getJSONArray(url, name) {
     async: true,
     type: "GET",
     dataType: 'json',
-    success: function () {
+    success: function() {
       console.log(name, data);
       ajaxArray[name] = data.responseJSON;
     },
-    error: function (arg) {
+    complete: function(arg) {
       let text = data.responseText;
-      text = text.replace("True", "true");
-      text = text.replace(/'/g, '"');
+      text = text.replace(/True/, "true");
+      text = text.replace(/, '/g, ', "');
+      text = text.replace(/: '/g, ': "');
+      text = text.replace(/',/g, '",');
+      text = text.replace(/{'/g, '{"');
+      text = text.replace(/'}/g, '"}');
+      text = text.replace(/':/g, '":');
+      text = text.replace(/None,/g, "[],");
       let json = JSON.parse(text);
       ajaxArray[name] = json;
+      console.log(name, json);
     }
   });
 }
@@ -126,6 +134,25 @@ function processGlobal() {
     "name": "China",
     "value": datapack.currentConfirmedCount
   });
+}
+
+function findPro(provinceName) {
+  for (let i of provinceAndCity) {
+    if (i.name == provinceName) return i;
+  }
+}
+
+function getRealName(name, province) {
+  let pro = findPro(province);
+  for (let i of pro.city) {
+    if (i.name.indexOf(name.slice(0, 2)) != -1) return i.name;
+  }
+  for (let i of pro.city) {
+    for (let j of i.districtAndCounty) {
+      if (j.indexOf(name.slice(0, 2)) != -1) return j;
+    }
+  }
+
 }
 
 function processChina() {
