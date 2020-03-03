@@ -309,7 +309,6 @@ optionLine = {
 optionLine.legend.selected['观察中'] = false;
 optionLine.legend.selected['死亡/确诊'] = false;
 setTimeout(function() {
-  lineArray = JSON.parse(lineData.responseText.replace(/'/g, '"'));
   optionLine.dataset.source = lineArray;
   chartChina.setOption(optionChina);
   chartWorld.setOption(optionWorld);
