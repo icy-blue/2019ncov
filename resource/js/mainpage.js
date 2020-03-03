@@ -347,7 +347,7 @@ function getArrays() {
 $(document).ready(function() {
   getArrays();
   setTimeout(function() {
-    makeOverallTable();
+    makeOverallTable(dataArray.data.getAreaStat);
     table = $('#table_province').DataTable({
       data: tableArray,
       columns: [{
@@ -410,8 +410,7 @@ $(document).ready(function() {
       colReorder: true,
       keys: true
     });
-    datapack = dataArray.data.getStatisticsService;
-    updateNumbers(datapack);
+    updateNumbers(dataArray.data.getStatisticsService);
     processGlobal();
     processChina();
   }, waiting);

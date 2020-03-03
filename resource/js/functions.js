@@ -94,8 +94,7 @@ function updateNumbers(datapack) {
   updateNumber($("#curedIncr"), curedIncr, curedIncr);
 }
 
-function makeOverallTable() {
-  dataDetail = dataArray.data.getAreaStat;
+function makeOverallTable(dataDetail) {
   for (let i = 0; i < dataDetail.length; i++) {
     let province = dataDetail[i];
     tableArray.push(new Province(province.provinceName, province.provinceName,
