@@ -315,29 +315,15 @@ setTimeout(function() {
   optionLine.dataset.source = lineArray;
   chartChina.setOption(optionChina);
   chartWorld.setOption(optionWorld);
-  console.log(optionLine);
-
-  function getENProvinceName(cnProvinceName) {
-    for (let i = 0; i < provinceNameArray.length; i++) {
-      if (provinceNameArray[i].provinceName.indexOf(cnProvinceName) != -1) {
-        return provinceNameArray[i].provinceEnglishName;
-      }
-    }
-  }
-  chartChina.on('click', function(params) {
-    console.log(params.name);
-    console.log(getENProvinceName(params.name));
-
-  });
   chartLine.setOption(optionLine);
 }, waiting + 200);
 
 function getArrays() {
   getJSONArray("/resource/data/country-code.json", "nameArray");
-  getJSONArray("http://data.icys.club/git.json", "lineArray");
+  getJSONArray("http://cdn.icys.club/git.json", "lineArray");
   getJSONArray("/resource/data/city.json", "cityArray");
   getJSONArray("/resource/data/province.json", "provinceNameArray");
-  getJSONArray("http://data.icys.club/dingxiangyuan.json", "dataArray");
+  getJSONArray("http://cdn.icys.club/dingxiangyuan.json", "dataArray");
   setTimeout(function () {
     nameArray = ajaxArray.nameArray;
     lineArray = ajaxArray.lineArray;

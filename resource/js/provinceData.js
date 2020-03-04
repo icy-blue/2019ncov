@@ -17,7 +17,7 @@ let linkNameArray = getRequest();
 let linkENName = linkNameArray.province;
 document.write("<script type='text/javascript' src='/resource/js/map/" +
   linkENName + ".js'></script>");
-getJSONArray("http://data.icys.club/" + linkENName + "-all.json",
+getJSONArray("http://cdn.icys.club/" + linkENName + "-all.json",
   "province-all-data");
 
 function compare(property, increase) {
@@ -182,12 +182,144 @@ function processProvince() {
       borderWidth: 0
     }
   };
+  chartLine = echarts.init(document.getElementById('chartLine'));
+  dimensions = ['日期', '累计确诊', '现有确诊（含重症）', '现有疑似', '现有重症', '累计死亡', '累计治愈',
+    '累计确诊+现有疑似', '新增确诊', '新增疑似', '新增(疑似+确诊)', '观察中', '死亡/确诊'
+  ];
+  optionLine = {
+    title: {
+      text: result[0].provinceName + '新型肺炎疫情趋势',
+      x: 'center',
+      y: 'top',
+      top: '25px',
+      textStyle: {
+        fontSize: 25
+      }
+    },
+    legend: {
+      type: 'scroll',
+      x: 'center',
+      y: 'bottom',
+      padding: [0, 20],
+      itemGap: 3,
+      selected: {}
+    },
+    grid: {
+      left: '15%',
+      bottom: '40px'
+    },
+    tooltip: {},
+    dataset: {
+      dimensions: dimensions,
+      source: result,
+    },
+    xAxis: {
+      type: 'category'
+    },
+    yAxis: {},
+    dataZoom: [{
+      type: 'inside',
+      throttle: '50',
+      minValueSpan: 7,
+      start: 100,
+      end: 100
+    }],
+    series: [{
+        type: 'bar'
+      },
+      {
+        type: 'bar'
+      },
+      {
+        type: 'bar'
+      },
+      {
+        type: 'bar'
+      },
+      {
+        type: 'bar'
+      },
+      {
+        type: 'bar'
+      },
+      {
+        type: 'line',
+        label: {
+          normal: {
+            show: true,
+            position: 'top',
+          },
+        }
+      },
+      {
+        type: 'line',
+        label: {
+          normal: {
+            show: true,
+            position: 'top',
+          },
+        }
+      },
+      {
+        type: 'line',
+        label: {
+          normal: {
+            show: true,
+            position: 'top',
+          },
+        }
+      },
+      {
+        type: 'line',
+        label: {
+          normal: {
+            show: true,
+            position: 'top',
+          }
+        }
+      },
+      {
+        type: 'line',
+        label: {
+          normal: {
+            show: true,
+            position: 'top',
+          }
+        }
+      },
+      {
+        type: 'line',
+        label: {
+          normal: {
+            show: true,
+            position: 'top',
+            formatter: function(params) {
+              str = params.data['死亡/确诊'] + '%';
+              return str;
+            }
+          }
+        },
+        tooltip: {
+          formatter: function(item) {
+            str = item.seriesName + "<br>" +
+              item.marker + ' ' + item.data['日期'] + ' : ' + item.data['死亡/确诊'] + '%';
+            return str;
+          }
+
+        }
+      }
+    ]
+  };
+  optionLine.legend.selected['观察中'] = false;
+  optionLine.legend.selected['死亡/确诊'] = false;
   chartProvince.setOption(optionProvince);
+  chartLine.setOption(optionLine);
 }
 
 $(document).ready(function() {
   setTimeout(function() {
     processData();
+    $('pro_text').text(result[0].provinceName + "疫情");
     table = $('#table_province').DataTable({
       data: dataArray,
       columns: [{

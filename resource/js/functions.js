@@ -2,7 +2,7 @@ let table, dataDetail, provinceNameArray, lineArray, cityArray, datapack;
 let ajaxArray = [];
 let dataArray = [];
 
-let waiting = 4000;
+let waiting = 3500;
 
 let tableArray = [],
   chinaChartArray = [],
