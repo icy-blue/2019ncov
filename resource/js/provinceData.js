@@ -1,5 +1,5 @@
 let result = [],
-  provinceChartData = [];
+  provinceChartData = [], itemA, itemB;
 
 function getRequest() {
   let url = location.search;
@@ -24,7 +24,8 @@ function compare(property, increase) {
   return function(a, b) {
     let value1 = a[property];
     let value2 = b[property];
-    return (value1 - value2) * increase ? 1 : -1;
+    // console.log((value1 - value2), (value1 - value2) * increase ? -1 : 1);
+    return (value1 - value2) * increase ? -1 : 1;
   };
 }
 
@@ -43,7 +44,7 @@ function processData() {
       }
     }
     item.日期 = "" + date.getFullYear() + "/" +
-      date.getMonth() + "/" + date.getDate();
+      (date.getMonth() + 1) + "/" + date.getDate();
     item.累计确诊 = item.confirmedCount;
     item.现有确诊 = item.currentConfirmedCount;
     item.现有疑似 = item.suspectedCount;
@@ -51,7 +52,7 @@ function processData() {
     item.现有重症 = 0;
     item.累计治愈 = item.curedCount;
     item["累计确诊+现有疑似"] = item.confirmedCount + item.suspectedCount;
-    console.log(i, array.length - 1);
+    // console.log(i, array.length - 1);
     item.新增确诊 = result.length == 0 ? item.confirmedCount :
       item.confirmedCount - result[result.length - 1].confirmedCount;
     item.新增疑似 = result.length == 0 ? item.suspectedCount :
@@ -62,32 +63,33 @@ function processData() {
     item.观察中 = 0;
     result.push(item);
   }
-  array.sort(compare("updateTime", false));
-  dataArray.push(new Province(result[0].provinceName, result[0].provinceName,
-    result[0].confirmedCount, result[0].currentConfirmedCount,
-    result[0].suspectedCount, result[0].curedCount, result[0].deadCount));
-  for (let i = 0; i < result[0].cities.length; i++) {
-    let item = result[0].cities[i];
-    console.log(item);
-    item.provinceName = result[0].provinceName;
-    dataArray.push(new Province(result[0].provinceName, item.cityName,
+  result.sort(compare("updateTime", false));
+  itemA = result[result.length -1], itemB = result[result.length - 2];
+  dataArray.push(new Province(itemA.provinceName, itemA.provinceName,
+    itemA.confirmedCount, itemA.currentConfirmedCount,
+    itemA.suspectedCount, itemA.curedCount, itemA.deadCount));
+  for (let i = 0; i < itemA.cities.length; i++) {
+    let item = itemA.cities[i];
+    // console.log(item);
+    item.provinceName = itemA.provinceName;
+    dataArray.push(new Province(itemA.provinceName, item.cityName,
       item.confirmedCount, item.currentConfirmedCount, item.suspectedCount,
       item.curedCount, item.deadCount));
     provinceChartData.push({
       name: getRealName(item.cityName, item.provinceName),
       value: item.currentConfirmedCount
     });
-    console.log(item.cityName, getRealName(item.cityName, item.provinceName));
+    // console.log(item.cityName, getRealName(item.cityName, item.provinceName));
   }
-  console.log(provinceChartData);
-  datapack = result[0];
+  // console.log(provinceChartData);
+  datapack = itemA;
   datapack.seriousCount = datapack.seriousIncr = 0;
-  datapack.currentConfirmedIncr = result[0].currentConfirmedCount -
-    result[1].currentConfirmedCount;
-  datapack.suspectedIncr = result[0].suspectedCount - result[1].suspectedCount;
-  datapack.curedIncr = result[0].curedCount - result[1].curedCount;
-  datapack.confirmedIncr = result[0].confirmedCount - result[1].confirmedCount;
-  datapack.deadIncr = result[0].deadCount - result[1].deadCount;
+  datapack.currentConfirmedIncr = itemA.currentConfirmedCount -
+    itemB.currentConfirmedCount;
+  datapack.suspectedIncr = itemA.suspectedCount - itemB.suspectedCount;
+  datapack.curedIncr = itemA.curedCount - itemB.curedCount;
+  datapack.confirmedIncr = itemA.confirmedCount - itemB.confirmedCount;
+  datapack.deadIncr = itemA.deadCount - itemB.deadCount;
 }
 
 function processProvince() {
@@ -118,7 +120,7 @@ function processProvince() {
         position: "top",
         margin: 8
       },
-      map: "" + result[0].provinceShortName,
+      map: "" + itemA.provinceShortName,
       mapType: "province",
       data: provinceChartData,
       roam: true,
@@ -152,7 +154,7 @@ function processProvince() {
       borderWidth: 0
     },
     title: [{
-      text: result[0].provinceName + "疫情情况",
+      text: itemA.provinceName + "疫情情况",
       left: "center",
       padding: 5,
       itemGap: 10,
@@ -188,7 +190,7 @@ function processProvince() {
   ];
   optionLine = {
     title: {
-      text: result[0].provinceName + '新型肺炎疫情趋势',
+      text: itemA.provinceName + '新型肺炎疫情趋势',
       x: 'center',
       y: 'top',
       top: '25px',
@@ -319,7 +321,7 @@ function processProvince() {
 $(document).ready(function() {
   setTimeout(function() {
     processData();
-    $('pro_text').text(result[0].provinceName + "疫情");
+    $('pro_text').text(itemA.provinceName + "疫情");
     table = $('#table_province').DataTable({
       data: dataArray,
       columns: [{

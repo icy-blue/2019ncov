@@ -17,7 +17,7 @@ function getJSONArray(url, name) {
     type: "GET",
     dataType: 'json',
     success: function() {
-      console.log(name, data);
+      // console.log(name, data);
       ajaxArray[name] = data.responseJSON;
     },
     complete: function(arg) {
@@ -32,7 +32,7 @@ function getJSONArray(url, name) {
       text = text.replace(/None,/g, "[],");
       let json = JSON.parse(text);
       ajaxArray[name] = json;
-      console.log(name, json);
+      // console.log(name, json);
     }
   });
 }
@@ -120,7 +120,7 @@ function makeOverallTable(dataDetail) {
 
 function processGlobal() {
   let globalPack = dataArray.data.getListByCountryTypeService2;
-  console.log(globalPack);
+  // console.log(globalPack);
   for (let i = 0; i < globalPack.length; i++) {
     let cnName = globalPack[i].provinceName;
     let enName = getENByCN(cnName);
