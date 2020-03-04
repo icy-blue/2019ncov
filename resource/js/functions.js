@@ -155,6 +155,14 @@ function getRealName(name, province) {
 
 }
 
+function getENProvinceName(cnProvinceName) {
+  for (let i = 0; i < provinceNameArray.length; i++) {
+    if (provinceNameArray[i].provinceName.indexOf(cnProvinceName) != -1) {
+      return provinceNameArray[i].provinceEnglishName;
+    }
+  }
+}
+
 function processChina() {
   for (let i = 0; i < dataDetail.length; i++) {
     chinaChartArray.push({
@@ -162,4 +170,9 @@ function processChina() {
       "value": dataDetail[i].currentConfirmedCount
     });
   }
+  chartChina.on('click', function(params) {
+    // console.log(params.name);
+    // console.log(getENProvinceName(params.name));
+    window.open("/province.html?province=" + getENProvinceName(params.name), 'top');
+  });
 }
