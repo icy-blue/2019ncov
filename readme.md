@@ -8,9 +8,9 @@
 - [x] 表格可伸缩（实现方式：jQuery dataTable）
 - [x] 表格分组展示（实现方式：jQuery dataTable）
 - [x] 表格分组可折叠（实现方式：jQuery dataTable）
-- [x] 图表展示（实现方式：echart.js + map-viz）
-- [x] 按省份的区域图像展示渲染（实现方式：html-svg + js）
-- [ ] 特色地域人口流动（实现方式：百度地图api + html-svg）
+- [x] 图表展示（实现方式：echarts.js + map-viz）
+- [x] 按省份的区域图像展示渲染（实现方式：echarts.js）
+- [ ] 特色地域人口流动（实现方式：百度地图api）
 - [ ] 用户评论模块（弹幕型）（实现方式：目前的想法是ajax + php + mysql）
 - [x] 导航栏对于浏览窗口大小的自适应（实现方式：html + css）
 - [x] 图表大小对于浏览窗口大小的自适应（实现方式：JavaScript + css）
