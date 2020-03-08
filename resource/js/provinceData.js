@@ -15,7 +15,7 @@ function getRequest() {
 }
 let linkNameArray = getRequest();
 let linkENName = linkNameArray.province;
-document.write("<script type='text/javascript' src='/resource/js/map/" +
+document.write("<script type='text/javascript' src='resource/js/map/" +
   linkENName + ".js'></script>");
 getJSONArray("http://cdn.icys.club/" + linkENName + "-all.json",
   "province-all-data");

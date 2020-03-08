@@ -60,7 +60,7 @@ function renderInit (){
       borderWidth: 0
     },
     title: [{
-      text: "国内疫情情况",
+      text: "国内疫情情况(加载失败请刷新)",
       left: "center",
       padding: 5,
       itemGap: 10,
@@ -150,7 +150,7 @@ function renderInit (){
       borderWidth: 0
     },
     title: [{
-      text: "国际疫情情况",
+      text: "国际疫情情况(加载失败请刷新)",
       left: "center",
       padding: 5,
       itemGap: 10,
@@ -319,10 +319,10 @@ setTimeout(function() {
 }, waiting + 200);
 
 function getArrays() {
-  getJSONArray("/resource/data/country-code.json", "nameArray");
+  getJSONArray("resource/data/country-code.json", "nameArray");
   getJSONArray("http://cdn.icys.club/git.json", "lineArray");
-  getJSONArray("/resource/data/city.json", "cityArray");
-  getJSONArray("/resource/data/province.json", "provinceNameArray");
+  getJSONArray("resource/data/city.json", "cityArray");
+  getJSONArray("resource/data/province.json", "provinceNameArray");
   getJSONArray("http://cdn.icys.club/dingxiangyuan.json", "dataArray");
   setTimeout(function () {
     nameArray = ajaxArray.nameArray;

@@ -177,6 +177,6 @@ function processChina() {
   chartChina.on('click', function(params) {
     // console.log(params.name);
     // console.log(getENProvinceName(params.name));
-    window.open("/province.html?province=" + getENProvinceName(params.name), 'top');
+    window.open("/201905130198/province.html?province=" + getENProvinceName(params.name), 'top');
   });
 }
