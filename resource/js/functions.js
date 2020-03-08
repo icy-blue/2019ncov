@@ -145,11 +145,15 @@ function findPro(provinceName) {
 function getRealName(name, province) {
   let pro = findPro(province);
   for (let i of pro.city) {
-    if (i.name.indexOf(name.slice(0, 2)) != -1) return i.name;
+    if (i.name.indexOf(name.slice(0, 2)) != -1) {
+      return i.name;
+    }
   }
   for (let i of pro.city) {
     for (let j of i.districtAndCounty) {
-      if (j.indexOf(name.slice(0, 2)) != -1) return j;
+      if (j.indexOf(name.slice(0, 2)) != -1) {
+        return j;
+      }
     }
   }
 

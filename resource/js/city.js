@@ -134,7 +134,7 @@ let provinceAndCity = [
     ]
   },
   {
-    name: "内蒙古",
+    name: "内蒙古自治区",
     city: [
       {
         name: "呼和浩特市",
@@ -1253,7 +1253,7 @@ let provinceAndCity = [
     ]
   },
   {
-    name: "西藏",
+    name: "西藏自治区",
     city: [
       {
         name: "拉萨市",
@@ -1425,7 +1425,7 @@ let provinceAndCity = [
     ]
   },
   {
-    name: "宁夏",
+    name: "宁夏回族自治区",
     city: [
       {
         name: "银川市",
@@ -1450,7 +1450,7 @@ let provinceAndCity = [
     ]
   },
   {
-    name: "新疆",
+    name: "新疆维吾尔自治区",
     city: [
       {
         name: "乌鲁木齐市",
